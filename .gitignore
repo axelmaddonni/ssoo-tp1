@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+!simusched/sched_mistery.o
 *.obj
 
 # Precompiled Headers

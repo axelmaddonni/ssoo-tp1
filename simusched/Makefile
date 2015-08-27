@@ -23,5 +23,25 @@ tasks.o: tasks.cpp tasks.h basetask.h
 clean:
 	rm -f $(OBJS) $(MAIN)
 
+
+ejercicio1: simusched
+
+ejercicio2: simusched rolando.tsk graphsched.py
+	./simusched rolando.tsk 1 4 1 SchedFCFS | ./graphsched.py > ej2-1core.png
+	./simusched rolando.tsk 2 4 1 SchedFCFS | ./graphsched.py > ej2-2core.png
+
+
+ejercicio4: simusched
+
+
+ejercicio5: simusched LoteEj5.tsk graphsched.py
+	./simusched LoteEj5.tsk 1 2 1 SchedRR 2 | ./graphsched.py > ej5-q2.png	
+	./simusched LoteEj5.tsk 1 2 1 SchedRR 10 | ./graphsched.py > ej5-q10.png	
+	./simusched LoteEj5.tsk 1 2 1 SchedRR 50 | ./graphsched.py > ej5-q50.png	
+
+
+ejercicio6: simusched LoteEj5.tsk graphsched.py
+	./simusched LoteEj5.tsk 1 2 1 SchedFCFS | ./graphsched.py > ej6.png
+
 new: clean all
 

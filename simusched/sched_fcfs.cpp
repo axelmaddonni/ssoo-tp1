@@ -1,10 +1,15 @@
 #include "sched_fcfs.h"
-
+#include <iostream>
 using namespace std;
 
 SchedFCFS::SchedFCFS(vector<int> argn) {
 	// FCFS recibe la cantidad de cores.
+
+  for(int i = 0; i<argn.size(); i++){
+    std::cerr << argn[i] << std::endl;
+  }
 }
+
 
 SchedFCFS::~SchedFCFS() {
 }

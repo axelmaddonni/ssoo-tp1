@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # coding: utf-8
 
 import re, sys, os
@@ -6,8 +6,8 @@ import re, sys, os
 from PIL import Image, ImageDraw, ImageFont
 
 # Font search paths and acceptable names. Order matters.
-FONT_DIRS = "/usr/share/fonts/truetype/freefont", "/usr/lib/fonts/", "/Library/Fonts"
-FONT_NAMES = "FreeMono.ttf", "Andale Mono.ttf", "Arial Black.ttf", "Hei.ttf.ttf", "Courier New.ttf"
+FONT_DIRS = "/usr/share/fonts/TTF", "/usr/share/fonts/truetype/freefont", "/usr/lib/fonts/", "/Library/Fonts"
+FONT_NAMES = "DejaVuSerif.ttf", "FreeMono.ttf", "Andale Mono.ttf", "Arial Black.ttf", "Hei.ttf.ttf", "Courier New.ttf"
 
 def findfont(names=FONT_NAMES, dirs=FONT_DIRS):
 	"""Return first existing path or None."""

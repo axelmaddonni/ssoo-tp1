@@ -11,6 +11,19 @@ class SchedNoMistery : public SchedBase {
     virtual void load(int pid);
     virtual void unblock(int pid);
     virtual int tick(int cpu, const enum Motivo m);  
+  private:
+    std::vector<std::queue<int> > colas;
+    std::vector<int> quantums;
+    int time_left;
+    mutable int cola_anterior;
+
+int primera_cola_no_vacia(){
+  for(int i = 0; i<colas.size(); i++){
+    if(!colas[i].empty()) return i;
+  }
+  return -1;
+}
+
 };
 
 #endif

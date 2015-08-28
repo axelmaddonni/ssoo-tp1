@@ -24,23 +24,20 @@ void SchedRR::load(int pid) {
 }
 
 void SchedRR::unblock(int pid) {
+  q.push(pid);
 }
 
 int SchedRR::tick(int cpu, const enum Motivo m) { 
   if (m == EXIT) {
 		// Si el pid actual terminó, sigue el próximo
-		if (q.empty()){
-     
-      return IDLE_TASK;
-    }
+		if (q.empty()) return IDLE_TASK;
     else {
       time_left[cpu] = quantums[cpu];
 			int sig = q.front(); q.pop(); 
 			return sig;
 		}
 	} else if(m == BLOCK){
-    if(!q.empty()){
-      q.push(current_pid(cpu));
+    if(!q.empty()){ // esta bloqueado, no va a la cola
       time_left[cpu] = quantums[cpu];
 	  	int sig = q.front(); q.pop(); 
 	  	return sig;
@@ -60,8 +57,7 @@ int SchedRR::tick(int cpu, const enum Motivo m) {
 
         return current_pid(cpu);
       }
-    }
-		// Siempre sigue el pid actual mientras no termine.
+    }	
 	  if (current_pid(cpu) == IDLE_TASK && !q.empty()) {
 			int sig = q.front(); q.pop();
 			return sig;

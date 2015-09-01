@@ -5,12 +5,8 @@
 #include <iostream>
 using namespace std;
 
-SchedNoMistery::SchedNoMistery(vector<int> argn){
-  
-  cerr << "const..." << endl; 
+SchedNoMistery::SchedNoMistery(vector<int> argn){ 
   colas.push_back(queue<int>());
-  cerr << "const..." << endl;
-  
   quantums.push_back(1); 
   for(size_t i = 1; i<argn.size(); i++){
     colas.push_back(queue<int>());
@@ -20,11 +16,7 @@ SchedNoMistery::SchedNoMistery(vector<int> argn){
 
 
 void SchedNoMistery::load(int pid) {
-
-      cerr << "loading..." << endl;
   colas[0].push(pid);
-
-      cerr << "ok" << endl;
 }
 
 void SchedNoMistery::unblock(int pid) {  
@@ -44,7 +36,6 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
     else {
       time_left = quantums[i];
       cola_anterior = i;
-      cerr << "tamano de cola -> " << colas[i].size() << endl;
 			int sig = colas[i].front(); colas[i].pop(); 
 			return sig;
 		}
@@ -53,8 +44,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
     else { // esta bloqueado, no va a la cola
       time_left = quantums[i];
       cola_anterior = i;
-
-      cerr << "tamano de cola -> " << colas[i].size() << endl;
+ 
 	    int sig = colas[i].front(); colas[i].pop(); 
 	  	return sig;
     } 
@@ -74,7 +64,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
           time_left = quantums[i];
           cola_anterior = i;
           
-      cerr << "tamano de cola -> " << colas[i].size() << endl;
+
 	    	  int sig = colas[i].front(); colas[i].pop();
 	    	  return sig;
         } 
@@ -84,7 +74,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
       time_left = quantums[i];
       cola_anterior = i;    
 			
-      cerr << "tamano de cola -> " << colas[i].size() << endl;
+
       int sig = colas[i].front(); colas[i].pop();
 			return sig;
 		} else {

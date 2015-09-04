@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <queue>
+#include <map>
 #include "basesched.h"
 
 class SchedRR2 : public SchedBase {
@@ -12,6 +13,13 @@ class SchedRR2 : public SchedBase {
 		virtual void load(int pid);
 		virtual void unblock(int pid);
 		virtual int tick(int cpu, const enum Motivo m);
+  private:
+    std::vector<std::queue<int> > colas;
+    std::vector<int> procesos_totales;
+    std::vector<int> quantums;
+    std::vector<int> time_left;
+
+    std::map<int, int> bloqueados; // diccionario. clave = pid, significado = core
 };
 
 #endif

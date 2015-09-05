@@ -31,8 +31,9 @@ void TaskConsola(int pid, vector<int> params) { // params: n, bmin, bmax
   for(int i = 0; i < n; i++){
     double r = rand();
     r /= RAND_MAX;
-    r *= (bmax-bmin);
+    r *= (bmax-bmin) + 1;
     r += bmin;
+    if (r == bmax + 1) r = bmax;
     uso_IO(pid, (int) r);
   }
 }

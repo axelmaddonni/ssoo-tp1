@@ -51,7 +51,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
   } else {
     if(current_pid(cpu) != IDLE_TASK){
       time_left--;  
-      if(time_left == 0){
+      if(time_left <= 0){
         // Si el pid actual terminó, sigue el próximo    
         if(i == -1) return current_pid(cpu);
         else {

@@ -20,7 +20,13 @@ void SchedNoMistery::load(int pid) {
 }
 
 void SchedNoMistery::unblock(int pid) {  
-  colas[0].push(pid);
+  cola_anterior = bloqueados[pid];
+  if(cola_anterior == 0){
+    colas[0].push(pid);
+  } else {
+    colas[cola_anterior-1].push(pid);
+  }
+  bloqueados.erase(pid);
 }
 
 
@@ -42,6 +48,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 	} else if(m == BLOCK){
     if(i == -1) return current_pid(cpu);
     else { // esta bloqueado, no va a la cola
+      bloqueados[current_pid(cpu)] = cola_anterior;
       time_left = quantums[i];
       cola_anterior = i;
  

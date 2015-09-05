@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <queue>
+#include <map>
 #include "basesched.h"
 
 class SchedNoMistery : public SchedBase {
@@ -17,12 +18,15 @@ class SchedNoMistery : public SchedBase {
     int time_left;
     mutable int cola_anterior;
 
-int primera_cola_no_vacia(){
-  for(int i = 0; i<colas.size(); i++){
-    if(!colas[i].empty()) return i;
-  }
-  return -1;
-}
+    std::map<int, int> bloqueados; // para cada bloqueado, me guardo en que cola estaba
+
+
+    int primera_cola_no_vacia(){
+      for(int i = 0; i<colas.size(); i++){
+        if(!colas[i].empty()) return i;
+      }
+      return -1;
+    }
 
 };
 

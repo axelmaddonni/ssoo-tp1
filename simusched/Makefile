@@ -25,11 +25,14 @@ clean:
 
 
 ejercicio1: simusched
+	./simusched LoteEj1.tsk 1 2 1 SchedFCFS | ./graphsched.py > informe/imgs/imgEj1.png
 
 ejercicio2: simusched rolando.tsk graphsched.py
-	./simusched rolando.tsk 1 4 1 SchedFCFS | ./graphsched.py > ej2-1core.png
-	./simusched rolando.tsk 2 4 1 SchedFCFS | ./graphsched.py > ej2-2core.png
+	./simusched rolando.tsk 1 4 1 SchedFCFS | ./graphsched.py > informe/imgs/ej2-1core.png
+	./simusched rolando.tsk 2 4 1 SchedFCFS | ./graphsched.py > informe/imgs/ej2-2core.png
 
+ejercicio3: simusched
+	./simusched LoteEj3.tsk 1 4 1 SchedFCFS | ./graphsched.py > informe/imgs/imgEj3.png
 
 ejercicio4: simusched
 

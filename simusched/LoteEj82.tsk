@@ -1,0 +1,5 @@
+TaskIO 1 100
+TaskCPU 50
+@1:
+TaskCPU 5
+TaskCPU 50

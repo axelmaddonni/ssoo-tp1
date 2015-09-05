@@ -46,5 +46,13 @@ ejercicio6: simusched LoteEj5.tsk graphsched.py
 ejercicio7: simusched LoteEj71.tsk graphsched.py
 	./simusched LoteEj71.tsk 1 2 1 SchedMistery 2 3 4 | ./graphsched.py > ej7-1.png
 
+ejercicio8:
+	./simusched LoteEj81.tsk 2 1 4 SchedRR 5 5 | ./graphsched.py > ej8-1rr.png
+	./simusched LoteEj81.tsk 2 1 4 SchedRR2 5 5 | ./graphsched.py > ej8-1rr2.png
+	./simusched LoteEj82.tsk 2 1 4 SchedRR 5 5 | ./graphsched.py > ej8-2rr.png
+	./simusched LoteEj82.tsk 2 1 4 SchedRR2 5 5 | ./graphsched.py > ej8-2rr2.png
+
+
+
 new: clean all
 

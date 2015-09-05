@@ -25,11 +25,10 @@ SchedRR2::~SchedRR2() {
 void SchedRR2::load(int pid) {
   int min_procesos_totales = 0;
   for(int i = 0; i<procesos_totales.size(); i++){
-    if(procesos_totales[i] < min_procesos_totales){
+    if(procesos_totales[i] < procesos_totales[min_procesos_totales]){
       min_procesos_totales = i;
     }
   }
-
   colas[min_procesos_totales].push(pid);
   procesos_totales[min_procesos_totales]++;
 

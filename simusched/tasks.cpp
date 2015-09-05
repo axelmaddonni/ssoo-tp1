@@ -44,35 +44,26 @@ void TaskBatch(int pid, vector<int> params) { // params: total_cpu, cant_bloqueo
   int cant_bloqueos = params[1]; 
 
   std::vector<int> tiempos_de_bloqueo;
-  for(int i = 0; i<total_cpu; i++){
-    tiempos_de_bloqueo.push_back(i); // armo el vector de tiempos de bloqueo
-  }                                 // = {0, 1, 2, 3, 4, ..., total_cpu-1}
+  // armo el vector de tiempos de bloqueo
+  for(int i = 0; i < cant_bloqueos; i++) tiempos_de_bloqueo.push_back(true); 
+  for(int i = 0; i < total_cpu - cant_bloqueos; i++) tiempos_de_bloqueo.push_back(false);
 
   // Uso fisher yates para mezclarlo
   // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
   int n = tiempos_de_bloqueo.size();
-  for(int i = n-1; i>=1; i--){
-    int j = rand()%(n-i) + i; //j al azar,  i<=j<n
-    
+  for(int i = n - 1; i >= 1; i--)
+  {
+    int j = rand() % (n-i) + i; //j al azar,  i<=j<n
+    //swap
     int temp = tiempos_de_bloqueo[i];
     tiempos_de_bloqueo[i] = tiempos_de_bloqueo[j];
     tiempos_de_bloqueo[j] = temp;
   }
 
 
-  for(int i = 0; i<total_cpu; i++){
-    // me fijo si toca bloquear o toca usar cpu
-    // si esta en las primeras cant_bloqueos posiciones
-    // de tiempos_de_bloqueo toca bloquear
-    bool hay_que_bloquear = false;
-    for(int j = 0; j<cant_bloqueos; j++){
-      if(tiempos_de_bloqueo[j] == i){
-        hay_que_bloquear = true;
-        break;
-      }
-    }
-
-    if(hay_que_bloquear) uso_IO(pid, 1);
+  for(int i = 0; i<total_cpu; i++)
+  {
+    if (tiempos_de_bloqueo[i]) uso_IO(pid, 1);
     else uso_CPU(pid, 1);
   }
 }

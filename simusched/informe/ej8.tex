@@ -26,13 +26,13 @@ TaskCPU 30
 \begin{figure}[H]
 \caption{Ejemplo de un lote de tareas que solo usa CPU en Round Robin 1}
 \label{fig:ej8-11}
-\includegraphics[width=0.9\columnwidth]{imgs/ej8-1rr.png}
+\includegraphics[width=1\textwidth]{imgs/ej8-1rr.png}
 \end{figure}
 
 \begin{figure}[H]
 \caption{Ejemplo de un lote de tareas que solo usa CPU en Round Robin 2}
 \label{fig:ej8-12}
-\includegraphics[width=0.9\columnwidth]{imgs/ej8-1rr2.png}
+\includegraphics[width=1\textwidth]{imgs/ej8-1rr2.png}
 \end{figure}
 
 Las métricas que analizaremos serán la eficiencia (tiempo en el que el cpu está corriendo las tareas sobre tiempo total) y el throughput.
@@ -41,7 +41,7 @@ Como se ve en la figura \ref{fig:ej8-11}, la eficiencia de el algoritmo de sched
 
 Por otro lado, como se ve en la figura \ref{fig:ej8-12}, la eficiencia de el algoritmo de scheduling que no migra nucleos (si no fuera por el idle del final, que se solucionaria simplemente poniendo igual cantidad de tareas en cada nucleo) es mucho más alta. Esto se debe a que al no migrar nucleos, se aprovecha el cache del core y no es se paga el costo de perderlo. Por esta razón, el throughput del algoritmo es más alto que antes, terminando las tareas en casi la mitad del tiempo que el anterior algoritmo.
 
-\section{Escenario 2}
+\subsection{Escenario 2}
 
 Ahora veamos que pasa si hay una tarea que se bloquea por mucho tiempo, una que lo usa por muy poco tiempo y otras 2 que requieren usar CPU por un poco más de tiempo.
 
@@ -56,13 +56,13 @@ TaskCPU 50
 \begin{figure}[H]
 \caption{Ejemplo de un lote de tareas que se bloquean y usan CPU en Round Robin 1}
 \label{fig:ej8-21}
-\includegraphics[width=0.9\columnwidth]{imgs/ej8-2rr.png}
+\includegraphics[width=1\textwidth]{imgs/ej8-2rr.png}
 \end{figure}
 
 \begin{figure}[H]
 \caption{Ejemplo de un lote de tareas que se bloquean y usan CPU en Round Robin 2}
 \label{fig:ej8-22}
-\includegraphics[width=0.9\columnwidth]{imgs/ej8-2rr2.png}
+\includegraphics[width=1\textwidth]{imgs/ej8-2rr2.png}
 \end{figure}
 
 

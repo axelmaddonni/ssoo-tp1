@@ -1,5 +1,5 @@
 
-\par Nuestra implementaci\'on de la TaskConsola consiste en un ciclo que realiza $n$ (el primer par\'ametro de la tarea) interrupciones. 
+Nuestra implementaci\'on de la TaskConsola consiste en un ciclo que realiza $n$ (el primer par\'ametro de la tarea) interrupciones. 
 Para determinar la cantidad de tiempo que debe durar cada interrupci\'on empleamos la funci\'on $std::rand()$ de la librer\'ia est\'andar. 
 \par Sin embargo, es necesario normalizar el resultado de \'esta, ya que devuelve un valor entre $0$ y $RAND\_MAX$ (un macro definido en $stdlib.h$, dependiente de la implementaci\'on) y necesitamos que est\'e entre $bmin$ y $bmax$ (los otros dos par\'ametros de la tarea).
 Para lograr esto, dividimos el valor aleatorio inicial por $RAND\_MAX - 0$, para obtener un n\'umero perteneciente al intervalo $[0, 1]$.
@@ -13,6 +13,6 @@ Para evitar este error, si el resultado final es exactamente $bmax + 1$, le asig
 \begin{figure}[H]
 \caption{Ejemplo de un lote de tareas con Task Consola}
 \label{fig:figuraEj1}
-\includegraphics[width=0.9\columnwidth]{imgs/imgEj1.png}
+\includegraphics[width=1\textwidth]{imgs/imgEj1.png}
 \end{figure}
 

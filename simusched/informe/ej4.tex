@@ -1,0 +1,10 @@
+\par Para implementar el scheduler Round-Robin, decidimos usar en la estructura privada de la clase SchedRR una cola global con los pids de los procesos(ints), y dos vectores del tamaño de la cantidad de cores, uno para guardar el valor de los quantums correspondiente a cada core, y el otro para almacenar el tiempo restante hasta el desalojo, que se irá decrementando con los ticks.
+
+\par Los algoritmos son simples:
+
+\begin{itemize}
+\item Para inicializar el scheduler, inicializamos con una cola vacía, y el vector de quantums y time\_left con los valores correspondientes a los valores de quantum de cada core, pasados por parámetro.
+\item \emph{load} simplemente pushea un pid a la cola de procesos.
+\item \emph{unblock}, al igual que load, agrega el proceso desbloqueado a la cola global.
+\item En cada \emph{tick}, se evalúa el Motivo pasado por parámetro. En caso de que el proceso haya terminado (m==EXIT), si no hay procesos por ejecutar, se regresa a la tarea Idle, de lo contrario, se reinicia el timeleft del core al valor inicial (el valor de los quantum de dicho core) y pasa a ejecutar el primer proceso en la cola. En caso de que el proceso se encuentre bloqueado (m==BLOCK), al igual que en el caso anterior, se pasa a ejecutar el próximo proceso (el pid del proceso bloqueado recién regresará a la cola cuando se desbloquee). Por último, si no se cumplen estas condiciones (no terminó ni está bloqueado), si se está ejecutando la tarea idle, chequea que no haya procesos en la cola, y en caso de que lo haya le otorga la ejecución al primero. Si no fuera la tarea idle la que se está ejecutando, se resta uno al timeleft, y si éste llega a 0, se pasa a ejecutar el próximo proceso en la cola, reiniciando el valor del timeleft al valor de quantum original.
+\end{itemize}

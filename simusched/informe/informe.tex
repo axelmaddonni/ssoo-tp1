@@ -1,5 +1,5 @@
-\documentclass[a4paper,10pt, nofootinbib]{article}
-\usepackage[width=15.5cm, left=3cm, top=2.5cm, right=2cm, left=2cm, height= 24.5cm]{geometry}
+\documentclass[a4paper,12pt, nofootinbib]{article}
+\usepackage[width=15.5cm, left=3cm, top=3cm, right=2cm, left=2.5cm]{geometry}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -13,7 +13,15 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \usepackage{placeins}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+      colorlinks,
+      linkcolor={red!50!black},
+      citecolor={blue!50!black},
+      urlcolor={blue!80!black}
+}
+
 
 \usepackage{graphicx}
 \usepackage{sidecap}
@@ -63,6 +71,9 @@
 
 \begin{document}
 \maketitle
+
+\tableofcontents
+\newpage
 
 \section{Ejercicio 1}
 \input{ej1.tex}

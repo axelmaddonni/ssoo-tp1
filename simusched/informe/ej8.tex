@@ -10,7 +10,7 @@ Cuando un proceso se bloquea, lo definimos en el diccionario nombrado anteriorme
 
 \subsection{Escenario 1}
 
-La versión de Round Robin que no migra nucleos es beneficiosa en conjuntos de tareas que usan intensivamente el CPU y la memoria durante mucho tiempo. Como la memoria se usa intensivamente, migrar cores es costoso porque se pierde todo lo que estaba cacheado. 
+La versión de Round Robin que no migra núcleos es beneficiosa en conjuntos de tareas que usan intensivamente el CPU y la memoria durante mucho tiempo. Como la memoria se usa intensivamente, migrar cores es costoso porque se pierde todo lo que estaba cacheado. 
 
 El lote que diseñamos consiste en 3 tareas, cada una empieza un segundo despues de la otra, y cada una usa el procesador por 30 unidades de tiempo.
 
@@ -35,11 +35,11 @@ TaskCPU 30
 \includegraphics[width=1\textwidth]{imgs/ej8-1rr2.png}
 \end{figure}
 
-Las métricas que analizaremos serán la eficiencia (tiempo en el que el cpu está corriendo las tareas sobre tiempo total) y el throughput.
+Las métricas que analizaremos serán la eficiencia (tiempo en el que el CPU está corriendo las tareas sobre tiempo total) y el throughput.
 
-Como se ve en la figura \ref{fig:ej8-11}, la eficiencia de el algoritmo de scheduling que migra nucleos no es tan alta, dado que la migración de nucleos ocurre muy seguido y se debe pagar un costo muy alto cada vez. Por esta misma razón, el throughput de este algoritmo es también bajo.
+Como se ve en la figura \ref{fig:ej8-11}, la eficiencia de el algoritmo de scheduling que migra núcleos no es tan alta, dado que la migración de núcleos ocurre muy seguido y se debe pagar un costo muy alto cada vez. Por esta misma razón, el throughput de este algoritmo es también bajo.
 
-Por otro lado, como se ve en la figura \ref{fig:ej8-12}, la eficiencia de el algoritmo de scheduling que no migra nucleos (si no fuera por el idle del final, que se solucionaria simplemente poniendo igual cantidad de tareas en cada nucleo) es mucho más alta. Esto se debe a que al no migrar nucleos, se aprovecha el cache del core y no es se paga el costo de perderlo. Por esta razón, el throughput del algoritmo es más alto que antes, terminando las tareas en casi la mitad del tiempo que el anterior algoritmo.
+Por otro lado, como se ve en la figura \ref{fig:ej8-12}, la eficiencia de el algoritmo de scheduling que no migra núcleos (si no fuera por el idle del final, que se solucionaría simplemente poniendo igual cantidad de tareas en cada núcleo) es mucho más alta. Esto se debe a que al no migrar núcleos, se aprovecha el cache del core y no es se paga el costo de perderlo. Por esta razón, el throughput del algoritmo es más alto que antes, terminando las tareas en casi la mitad del tiempo que el anterior algoritmo.
 
 \subsection{Escenario 2}
 
@@ -66,7 +66,7 @@ TaskCPU 50
 \end{figure}
 
 
-Como se ve en la figura \ref{fig:ej8-21}, el rendimiento y el throughput de esta versión es altisimo. Esto se debe a que, cuando se bloquea un proceso, el algoritmo puede correr en paralelo las 2 tareas demandantes de CPU en paralelo totalmente.
+Como se ve en la figura \ref{fig:ej8-21}, el rendimiento y el throughput de esta versión es altísimo. Esto se debe a que, cuando se bloquea un proceso, el algoritmo puede correr en paralelo las 2 tareas demandantes de CPU en paralelo totalmente.
 
 Sin embargo, en la versión del algoritmo que no permite migración entre procesadores, en la figura \ref{fig:ej8-22} todo cambia. Al no poder migrar tareas entre núcleos, cuando la tarea 2 termina, y la tarea 0 está bloqueada, el procesador 1 tiene una carga muy alta, mientras que el procesador 0 esta totalmente ocioso. Por esta razón, la eficiencia es mucho más baja que antes, y en consecuencia, el throughput es mucho más bajo.
 
